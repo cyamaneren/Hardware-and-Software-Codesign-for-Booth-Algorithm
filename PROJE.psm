@@ -33,7 +33,7 @@ main: 		LOAD RAM_addr_id, 00
 read_RAM:	INPUT A_reg, (RAM_addr_id)
 			ADD RAM_addr_id, 01
 			INPUT B_reg, (RAM_addr_id)
-			OUTPUT A_reg, A_id
+			OUTPUT A_reg, A_id 
 			OUTPUT B_reg, B_id
 			OUTPUT start_reg, start_id			
 wait_done:	INPUT done_reg, done_id
