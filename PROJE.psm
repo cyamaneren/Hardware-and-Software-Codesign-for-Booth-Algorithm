@@ -1,0 +1,48 @@
+;***************************************************************
+; Ceyhun Yamaneren - 040140010
+; Int. to Embedded Systems dersi Final Projesi, Picoblaze KCMP3 standardı
+; assembly kodu
+; Booth algoritması ile çarpma işlemi projesi
+;***************************************************************
+;
+;giriş id'leri
+CONSTANT result_15_8_id, 80
+CONSTANT result_7_0_id, 81
+CONSTANT done_id, 82
+;
+;cikis id_leri
+;
+CONSTANT A_id, 80
+CONSTANT B_id, 81
+CONSTANT start_id, 82
+;
+;register isimleri
+;
+NAMEREG s2, RAM_addr_id
+NAMEREG s0, result_15_8
+NAMEREG s1, result_7_0
+NAMEREG s3, A_reg
+NAMEREG s4, B_reg
+NAMEREG s5, start_reg
+NAMEREG s6, done_reg
+;
+; Program
+;
+main: 		LOAD RAM_addr_id, 00 
+			LOAD start_reg, 01		
+read_RAM:	INPUT A_reg, (RAM_addr_id)
+			ADD RAM_addr_id, 01
+			INPUT B_reg, (RAM_addr_id)
+			OUTPUT A_reg, A_id
+			OUTPUT B_reg, B_id
+			OUTPUT start_reg, start_id			
+wait_done:	INPUT done_reg, done_id
+			COMPARE done_reg, 01
+			JUMP NZ, wait_done			
+take_resu:  INPUT result_15_8, result_15_8_id
+			INPUT result_7_0, result_7_0_id
+			COMPARE RAM_addr_id, 7F
+			JUMP Z, main
+			JUMP NZ, read_RAM
+			
+			
