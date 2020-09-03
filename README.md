@@ -29,4 +29,4 @@ Notes
 ---------------------------------------------------------
 HDL: Verilog
 
-Ceyhun Yamaneren // mail: ceyhunyamaneren@hotmail.com
+Ceyhun Yamaneren
